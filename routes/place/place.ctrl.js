@@ -19,7 +19,6 @@ function addPlace(req, res) {
     newPlace.lat = req.body.lat;
     newPlace.lng = req.body.lng;
     newPlace.placeName = req.body.placeName;
-    console.log(req.body.placeName);
 
     newPlace.save((err) => {
         if(err)

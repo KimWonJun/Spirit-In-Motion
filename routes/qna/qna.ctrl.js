@@ -10,10 +10,8 @@ function getQuestionList(req, res) {
         posts.forEach((post) => {
             data.push({
                 id: post._id,
-                title: post.title,
                 writer: post.writer,
-                conent: post.content,
-                answerCount: post.answers.lenght
+                conent: post.content
             });
         });
         res.status(200).json(data);
@@ -23,7 +21,6 @@ function getQuestionList(req, res) {
 function writeQuestion(req, res) {
     let newQuestion = new Post();
 
-    newQuestion.title = req.body.title;
     newQuestion.writer = req.body.writer;
     newQuestion.content = req.body.content;
     newQuestion.answers = [];
