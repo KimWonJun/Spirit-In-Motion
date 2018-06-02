@@ -29,7 +29,11 @@ function signIn(req, res) {
 function signUp(req, res) {
     let newUser = new User();
 
-    newUser = req.body;
+    newUser.name = req.body.name;
+    newUser.id = req.body.id;
+    newUser.pw = req.body.pw;
+    newUser.type = req.body.type;
+
     User.findOne({ id: req.body.id })
         .then((user) => {
             if (user === null) {
