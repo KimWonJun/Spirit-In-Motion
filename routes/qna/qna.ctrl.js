@@ -1,9 +1,21 @@
 const Post = require('../../models/post');
 
 function getQuestionList(req, res) {
-    let data = {};
+    let data = [];
     Post.find((err, response) => {
-        res.send(response);
+        if(err)
+            return res.status(500).json({
+                'result': 'failure'
+            });
+        response.forEach((post) => {
+            data.push({
+                id: post.id,
+                writer: post.writer,
+                title: post.title,
+                conent: post.content
+            });
+        });
+        res.status(200).json(data);
     });
 }
 
