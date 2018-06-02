@@ -7,4 +7,4 @@ const placeSchema = new Schema({
     placeName: String
 });
 
-module.exports = mongoose.model('posts', placeSchema);
+module.exports = mongoose.model('places', placeSchema);
