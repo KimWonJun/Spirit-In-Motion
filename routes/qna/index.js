@@ -7,3 +7,5 @@ router.get('/', ctrl.getQuestionList);
 router.post('/writeQuestion', ctrl.writeQuestion);
 router.get('/getQuestionDetail', ctrl.getQuestionDetail);
 router.post('/writeAnswer', ctrl.writeAnswer);
+
+module.exports = router;
