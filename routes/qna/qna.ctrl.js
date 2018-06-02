@@ -1,5 +1,16 @@
 const Post = require('../../models/post');
 
+function getDateNotice(gap) {
+    if(gap < 60)
+        return '방금 전';
+    else if(gap < 3600)
+        return `${gap / 60}분 전`;
+    else if(gap < 86400)
+        return `${gap / 3600}시간 전`;
+    else
+        return '오래된 게시물';
+}
+
 function getQuestionList(req, res) {
     let data = [];
     Post.find((err, posts) => {
@@ -8,23 +19,11 @@ function getQuestionList(req, res) {
                 'result': 'failure'
             });
         posts.forEach((post) => {
-            const gap = Date.now() - post.date;
-            let dateNotice;
-
-            if(gap < 60)
-                dateNotice = '방금 전';
-            else if(gap < 3600)
-                dateNotice = `${gap / 60}분 전`;
-            else if(gap < 86400)
-                dateNotice = `${gap / 3600}시간 전`;
-            else
-                dateNotice = '오래전 게시물';
-                
             data.push({
                 id: post._id,
                 writer: post.writer,
                 conent: post.content,
-                date: dateNotice
+                date: getDateNotice(Date.now() - post.date)
             });
         });
         res.status(200).json(data);
@@ -55,6 +54,9 @@ function getQuestionDetail(req, res) {
             return res.status(500).json({
                 'result': 'failure'
             });
+        post.answers.forEach((answer) => {
+            answer.date = getDateNotice(Date.now() - answer.date);
+        });
         res.status(200).json(post);
     });
 }
