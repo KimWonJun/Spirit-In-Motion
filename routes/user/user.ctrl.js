@@ -4,6 +4,7 @@ function signIn(req, res) {
     User.findOne({ id: req.body.id })
         .then((err, user) => {
             if (err) {
+                console.log(err);
                 res.status(500).json({
                     'result': 'failure'
                 });

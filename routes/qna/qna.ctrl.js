@@ -50,8 +50,15 @@ function getQuestionDetail(req, res) {
 }
 
 function writeAnswer(req, res) {
-    Post.findOne({_id: req.body.questionId})
-        .then((res.find));
+    let answer = req.body;
+    Post.findOneAndUpdate({_id: req.body.questionId}, {$push: {answers: answer}})
+        .then(() => {
+            res.status(200).json({'result': 'success'});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({'result': 'failure'});
+        });
 }
 
 exports.getQuestionList = getQuestionList;
