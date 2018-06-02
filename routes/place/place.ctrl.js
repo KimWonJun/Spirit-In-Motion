@@ -14,7 +14,7 @@ function getPlaces(req, res) {
 }
 
 function addPlace(req, res) {
-    let newPlace = new newPlace();
+    let newPlace = new Place();
     
     newPlace.lat = req.body.lat;
     newPlace.lng = req.body.lng;
