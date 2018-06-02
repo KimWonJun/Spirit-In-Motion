@@ -9,7 +9,6 @@ function getQuestionList(req, res) {
             });
         posts.forEach((post) => {
             data.push({
-                id: post.id,
                 title: post.title,
                 writer: post.writer,
                 conent: post.content,
@@ -21,12 +20,8 @@ function getQuestionList(req, res) {
 }
 
 function writeQuestion(req, res) {
-    let currentTime = Date.now();
-    console.log(currentTime);
-
     let newQuestion = new Post();
 
-    newQuestion.id = currentTime;
     newQuestion.title = req.body.title;
     newQuestion.writer = req.body.writer;
     newQuestion.content = req.body.content;
@@ -44,7 +39,7 @@ function writeQuestion(req, res) {
 }
 
 function getQuestionDetail(req, res) {
-    Post.findOne({id: req.query.questionId}, (err, post) => {
+    Post.findOne({_id: req.query.questionId}, (err, post) => {
         if(err)
             return res.status(500).json({
                 'result': 'failure'
@@ -54,7 +49,7 @@ function getQuestionDetail(req, res) {
 }
 
 function writeAnswer(req, res) {
-    Post.findOne({id: req.body.questionId})
+    Post.findOne({_id: req.body.questionId})
         .then((res.find));
 }
 
