@@ -22,6 +22,8 @@ function signIn(req, res) {
 function signUp(req, res) {
     let newUser = new Users();
 
+    console.log(res.body);
+
     newUser.name = res.body.name;
     newUser.id = res.body.id;
     newUser.pw = res.body.pw;
