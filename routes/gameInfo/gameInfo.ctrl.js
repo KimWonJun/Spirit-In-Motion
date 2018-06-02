@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 const URL = 'http://www.kosad.or.kr/info/special_game.asp?gbn=';
 
 function getGameInfo(req, res) {
+    console.log('GET GameInfo');
     const GAME_NO = req.query.no;
 
     request(URL + GAME_NO, (err, response, body) => {
@@ -15,8 +16,7 @@ function getGameInfo(req, res) {
         let data = {};
 
         data.data = $('.subContent').text();
-
-        res.status(200).json(data);
+        res.json(data);
     });
 }
 
