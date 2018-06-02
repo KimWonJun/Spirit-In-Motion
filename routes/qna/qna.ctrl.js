@@ -2,10 +2,9 @@ const Post = require('../../models/post');
 
 function getQuestionList(req, res) {
     let data = {};
-    Post.find()
-        .then((response) => {
-            res.send(response);
-        });
+    Post.find((err, response) => {
+        res.send(response);
+    });
 }
 
 function writeQuestion(req, res) {
@@ -41,7 +40,7 @@ function getQuestionDetail(req, res) {
 
 function writeAnswer(req, res) {
     Post.findOne({id: req.body.questionId})
-        .then();
+        .then((res.find));
 }
 
 exports.getQuestionList = getQuestionList;
