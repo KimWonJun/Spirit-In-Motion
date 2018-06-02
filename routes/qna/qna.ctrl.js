@@ -3,11 +3,9 @@ const Post = require('../../models/post');
 function getQuestionList(req, res) {
     let data = {};
     Post.find()
-        .then((res) => {
-            console.log(res);
+        .then((response) => {
+            res.send(response);
         });
-
-    res.json(data);
 }
 
 function writeQuestion(req, res) {
@@ -36,10 +34,9 @@ function writeQuestion(req, res) {
 function getQuestionDetail(req, res) {
     let data = {};
     Post.findOne({id: req.query.questionId})
-        .then((res) => {
-            console.log(res);
+        .then((response) => {
+            res.send(response);
         });
-    res.send(data);
 }
 
 function writeAnswer(req, res) {
