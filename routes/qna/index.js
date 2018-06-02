@@ -4,8 +4,8 @@ const router = express.Router();
 const ctrl = require('./qna.ctrl');
 
 router.get('/', ctrl.getQuestionList);
-router.post('/writeQuestion', ctrl.writeQuestion);
-router.get('/getQuestionDetail', ctrl.getQuestionDetail);
-router.post('/writeAnswer', ctrl.writeAnswer);
+router.post('/newQuestion', ctrl.writeQuestion);
+router.get('/:id', ctrl.getQuestionDetail);
+router.post('/:id/answer', ctrl.writeAnswer);
 
 module.exports = router;

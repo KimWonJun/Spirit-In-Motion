@@ -14,6 +14,6 @@ express()
     .use('/gameInfo', require('./routes/gameInfo'))
     .use('/user', require('./routes/user'))
     .use('/qna', require('./routes/qna'))
-    .use('/placeSearch', require('./routes/placeSearch'))
+    .use('/place', require('./routes/place'))
     .get('/', (req, res) => res.send('<h1>Hello, World!</h1>'))
     .listen(PORT, () => console.log(`Listening at ${PORT}`));

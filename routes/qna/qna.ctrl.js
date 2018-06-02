@@ -40,7 +40,7 @@ function writeQuestion(req, res) {
 }
 
 function getQuestionDetail(req, res) {
-    Post.findOne({_id: req.query.questionId}, (err, post) => {
+    Post.findOne({_id: req.params.id}, (err, post) => {
         if(err)
             return res.status(500).json({
                 'result': 'failure'
@@ -55,7 +55,7 @@ function writeAnswer(req, res) {
     answer.writer = req.body.writer;
     answer.content = req.body.conent;
 
-    Post.findOneAndUpdate({_id: req.body.questionId}, {$push: {answers: answer}})
+    Post.findOneAndUpdate({_id: req.params.id}, {$push: {answers: answer}})
         .then(() => {
             res.status(200).json({'result': 'success'});
         })
