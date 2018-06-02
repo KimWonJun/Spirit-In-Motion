@@ -8,10 +8,23 @@ function getQuestionList(req, res) {
                 'result': 'failure'
             });
         posts.forEach((post) => {
+            const gap = Date.now() - post.date;
+            let dateNotice;
+
+            if(gap < 60)
+                dateNotice = '방금 전';
+            else if(gap < 3600)
+                dateNotice = `${gap / 60}분 전`;
+            else if(gap < 86400)
+                dateNotice = `${gap / 3600}시간 전`;
+            else
+                dateNotice = '오래전 게시물';
+                
             data.push({
                 id: post._id,
                 writer: post.writer,
-                conent: post.content
+                conent: post.content,
+                date: dateNotice
             });
         });
         res.status(200).json(data);
@@ -51,6 +64,7 @@ function writeAnswer(req, res) {
 
     answer.writer = req.body.writer;
     answer.content = req.body.conent;
+    answer.date = Date.now();
 
     Post.findOneAndUpdate({_id: req.params.id}, {$push: {answers: answer}})
         .then(() => {

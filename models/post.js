@@ -5,7 +5,7 @@ const postSchema = new Schema({
     writer: String,
     content: String,
     answers: Array,
-    Date: Date
+    date: {tpye: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('posts', postSchema);
