@@ -9,6 +9,7 @@ function getQuestionList(req, res) {
             });
         posts.forEach((post) => {
             data.push({
+                id: post._id,
                 title: post.title,
                 writer: post.writer,
                 conent: post.content,
