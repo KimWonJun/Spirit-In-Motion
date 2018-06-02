@@ -31,12 +31,8 @@ function signUp(req, res) {
 
     newUser = req.body;
     User.findOne({ id: req.body.id })
-        .then((err, user) => {
-            if (err) {
-                res.status(500).json({
-                    'result': 'failure'
-                });
-            } else if (user === null) {
+        .then((user) => {
+            if (user === null) {
                 newUser.save((err) => {
                     if (err) {
                         res.status(500).json({
@@ -51,6 +47,14 @@ function signUp(req, res) {
                 });
             } else {
                 res.status(405).json({
+                    'result': 'failure'
+                });
+            }
+        })
+        .catch((err) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({
                     'result': 'failure'
                 });
             }
