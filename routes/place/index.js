@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ctrl = require('./placeSerach.ctrl');
+const ctrl = require('./place.ctrl');
 
 router.get('/', ctrl.getPlaces);
 router.post('/', ctrl.addPlace);
