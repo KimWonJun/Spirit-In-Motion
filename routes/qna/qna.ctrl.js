@@ -50,7 +50,11 @@ function getQuestionDetail(req, res) {
 }
 
 function writeAnswer(req, res) {
-    let answer = req.body;
+    let answer = {};
+
+    answer.writer = req.body.writer;
+    answer.content = req.body.conent;
+
     Post.findOneAndUpdate({_id: req.body.questionId}, {$push: {answers: answer}})
         .then(() => {
             res.status(200).json({'result': 'success'});
