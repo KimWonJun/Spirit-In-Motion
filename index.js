@@ -7,5 +7,6 @@ express()
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended : true}))
     .use('/gameInfo', require('./routes/gameInfo'))
+    .use('/docs', express.static('./API-spec.xlsx'))
     .get('/', (req, res) => res.send('<h1>Hello, World!</h1>'))
     .listen(PORT, () => console.log(`Listening at ${PORT}`));
