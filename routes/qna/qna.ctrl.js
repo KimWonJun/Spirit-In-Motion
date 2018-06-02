@@ -13,7 +13,7 @@ function getQuestionList(req, res) {
 function writeQuestion(req, res) {
     let currentTime = Date.now();
     console.log(currentTime);
-    
+
     let newQuestion = new Post();
 
     newQuestion.id = currentTime;
@@ -40,7 +40,8 @@ function getQuestionDetail(req, res) {
 }
 
 function writeAnswer(req, res) {
-    Post.findOne({id: req.body.questionId});
+    Post.findOne({id: req.body.questionId})
+        .then();
 }
 
 exports.getQuestionList = getQuestionList;

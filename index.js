@@ -13,6 +13,6 @@ express()
     .use('/docs', express.static('./API-spec.xlsx'))
     .use('/gameInfo', require('./routes/gameInfo'))
     .use('/user', require('./routes/user'))
-    .use('/')
+    //.use('/qna', require('./routes/qna'))
     .get('/', (req, res) => res.send('<h1>Hello, World!</h1>'))
     .listen(PORT, () => console.log(`Listening at ${PORT}`));
