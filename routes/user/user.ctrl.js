@@ -22,11 +22,11 @@ function signIn(req, res) {
 function signUp(req, res) {
     let newUser = new Users();
 
-    console.log(res.body);
+    console.log(req.body);
 
-    newUser.name = res.body.name;
-    newUser.id = res.body.id;
-    newUser.pw = res.body.pw;
+    newUser.name = req.body.name;
+    newUser.id = req.body.id;
+    newUser.pw = req.body.pw;
 
     Users.findOne({
         id: req.body.id
