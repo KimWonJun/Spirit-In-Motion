@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 12345;
 express()
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended : true}))
-    .use('/docs', express.static('./API-spec.xlsx'))
+    .use('/docs', express.static('./public/API-spec.xlsx'))
     .use('/gameInfo', require('./routes/gameInfo'))
     .use('/user', require('./routes/user'))
     .use('/qna', require('./routes/qna'))
