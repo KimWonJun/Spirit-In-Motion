@@ -3,7 +3,7 @@ const Place = require('../../models/place');
 function getPlaces(req, res) {
     Place.find()
         .then((res) => {
-            res.stauts(200).json(res);
+            res.status(200).json(res);
         })
         .catch((err) => {
             console.log(err);
