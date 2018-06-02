@@ -2,17 +2,18 @@ const Post = require('../../models/post');
 
 function getQuestionList(req, res) {
     let data = [];
-    Post.find((err, response) => {
+    Post.find((err, posts) => {
         if(err)
             return res.status(500).json({
                 'result': 'failure'
             });
-        response.forEach((post) => {
+        posts.forEach((post) => {
             data.push({
                 id: post.id,
-                writer: post.writer,
                 title: post.title,
-                conent: post.content
+                writer: post.writer,
+                conent: post.content,
+                answerCount: post.answers.lenght
             });
         });
         res.status(200).json(data);
@@ -43,11 +44,13 @@ function writeQuestion(req, res) {
 }
 
 function getQuestionDetail(req, res) {
-    let data = {};
-    Post.findOne({id: req.query.questionId})
-        .then((response) => {
-            res.send(response);
-        });
+    Post.findOne({id: req.query.questionId}, (err, post) => {
+        if(err)
+            return res.status(500).json({
+                'result': 'failure'
+            });
+        res.status(200).json(post);
+    });
 }
 
 function writeAnswer(req, res) {
