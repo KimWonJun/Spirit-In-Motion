@@ -2,13 +2,8 @@ const User = require('../../models/user');
 
 function signIn(req, res) {
     User.findOne({ id: req.body.id })
-        .then((err, user) => {
-            if (err) {
-                console.log(err);
-                res.status(500).json({
-                    'result': 'failure'
-                });
-            } else if (user === null) {
+        .then((user) => {
+            if (user === null) {
                 res.status(405).json({
                     'result': 'failure'
                 });
@@ -18,6 +13,13 @@ function signIn(req, res) {
                 });
             } else {
                 res.status(405).json({
+                    'result': 'failure'
+                });
+            }
+        })
+        .catch((err) => {
+            if(err){
+                res.status(500).json({
                     'result': 'failure'
                 });
             }
