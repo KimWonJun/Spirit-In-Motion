@@ -17,7 +17,10 @@ function writeQuestion(req, res) {
     let newQuestion = new Post();
 
     newQuestion.id = currentTime;
-    newQuestion = req.body;
+    newQuestion.title = req.body.title;
+    newQuestion.writer = req.body.writer;
+    newQuestion.content = req.body.content;
+    newQuestion.answers = [];
 
     newQuestion.save((err) => {
         if(err)

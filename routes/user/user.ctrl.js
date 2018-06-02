@@ -26,8 +26,6 @@ function signIn(req, res) {
 function signUp(req, res) {
     let newUser = new User();
 
-    console.log(req.body);
-
     newUser = req.body;
     User.findOne({ id: req.body.id })
         .then((err, user) => {
