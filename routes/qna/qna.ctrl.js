@@ -23,7 +23,7 @@ function getQuestionList(req, res) {
             data.push({
                 id: post._id,
                 writer: post.writer,
-                conent: post.content,
+                content: post.content,
                 date: getDateNotice(Date.now() - post.date)
             });
         });
