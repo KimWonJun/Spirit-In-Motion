@@ -1,14 +1,12 @@
 const Post = require('../../models/post');
 
 function getDateNotice(gap) {
-    gap = parseInt(gap, 10);
-    console.log(gap);
     if(gap < 60 * 1000)
         return '방금 전';
     else if(gap < 3600 * 1000)
-        return `${gap / (60 * 1000)}분 전`;
+        return `${parseInt(gap / (60 * 1000), 10)}분 전`;
     else if(gap < 86400 * 1000)
-        return `${gap / (3600 * 1000)}시간 전`;
+        return `${parseInt(gap / (3600 * 1000), 10)}시간 전`;
     else
         return '오래된 게시물';
 }
