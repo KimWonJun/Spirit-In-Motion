@@ -1,6 +1,7 @@
 const Post = require('../../models/post');
 
 function getDateNotice(gap) {
+    console.log(gap);
     if(gap < 60)
         return '방금 전';
     else if(gap < 3600)
