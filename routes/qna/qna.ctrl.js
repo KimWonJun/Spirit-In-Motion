@@ -6,9 +6,9 @@ function getDateNotice(gap) {
     if(gap < 60 * 1000)
         return '방금 전';
     else if(gap < 3600 * 1000)
-        return `${gap / 60 * 1000}분 전`;
+        return `${gap / (60 * 1000)}분 전`;
     else if(gap < 86400 * 1000)
-        return `${gap / 3600 * 1000}시간 전`;
+        return `${gap / (3600 * 1000)}시간 전`;
     else
         return '오래된 게시물';
 }
