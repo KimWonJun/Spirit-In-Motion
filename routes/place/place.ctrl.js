@@ -15,13 +15,13 @@ function getPlaces(req, res) {
 
 function addPlace(req, res) {
     let newPlace = new Place();
-    
+
     newPlace.lat = req.body.lat;
     newPlace.lng = req.body.lng;
     newPlace.placeName = req.body.placeName;
 
     newPlace.save((err) => {
-        if(err)
+        if (err)
             return res.status('500').json({
                 'result': 'failure'
             });

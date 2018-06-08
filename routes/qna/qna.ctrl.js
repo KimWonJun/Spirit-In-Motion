@@ -65,7 +65,7 @@ function writeAnswer(req, res) {
     let answer = {};
 
     answer.writer = req.body.writer;
-    answer.content = req.body.conent;
+    answer.content = req.body.content;
     answer.date = Date.now();
 
     Post.findOneAndUpdate({_id: req.params.id}, {$push: {answers: answer}})

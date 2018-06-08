@@ -2,8 +2,8 @@ const Tip = require('../../models/tip');
 
 function getTips(req, res) {
     Tip.find()
-        .then((books) => {
-            res.status(200).json(books);
+        .then((tips) => {
+            res.status(200).json(tips);
         })
         .catch((err) => {
             console.log(err);
